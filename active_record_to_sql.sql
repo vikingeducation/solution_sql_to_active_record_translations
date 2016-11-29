@@ -50,8 +50,11 @@ SELECT DISTINCT
   COUNT(posts.author_id) AS num_posts
   FROM posts
   JOIN authors ON authors.id = posts.author_id
-  HAVING num_posts >= 3
+  GROUP BY authors.first_name, authors.id
+  HAVING COUNT(posts.author_id) >= 3
 ;
+
+      
 
 -- The posts with titles that start with the word "The"
 SELECT * FROM posts
